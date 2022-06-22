@@ -41,7 +41,7 @@ def post(request):
 		form = PostForm()
 	return render(request, 'social/post.html', {'form' : form })
 
-
+# sad
 
 def profile(request, username=None):
 	current_user = request.user
