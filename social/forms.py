@@ -1,3 +1,4 @@
+from msilib.schema import File
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
@@ -14,6 +15,7 @@ class UserRegisterForm(UserCreationForm):
 		help_texts = {k:"" for k in fields }
 
 class PostForm(forms.ModelForm):
+	image = forms.ImageField(label="",widget=forms.FileInput(attrs={'type':'file'}))
 	content = forms.CharField(label='', widget=forms.Textarea(attrs={'rows':2, 'placeholder': '¿Qué está pasando?'}), required=True)
 
 	class Meta:
