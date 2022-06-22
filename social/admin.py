@@ -5,3 +5,4 @@ from .models import Post, Profile, Relationship
 admin.site.register(Profile)
 admin.site.register(Post)
 admin.site.register(Relationship)
+

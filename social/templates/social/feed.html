@@ -10,7 +10,9 @@
             <h2 class="username"><a href="{% url 'profile' post.user.username %}">@{{ post.user.username }}</a></h2>
             <i class="clock"></i>
             <time data-time="#">{{ post.timestamp|naturaltime }}</time>
-            <div class="image">{{post.images}}</div>
+            
+            <div class="image"><img src='media/{{post.image}}'></div>
+
             <div class="post">{{ post.content }}</div>
         </div>
     </div>

@@ -26,19 +26,21 @@ class Post(models.Model):
 	user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='posts')
 	timestamp = models.DateTimeField(default=timezone.now)
 	content = models.TextField()
-	image = models.ImageField()
+	# album = models.ForeignKey(Post, related_name='images',on_delete=models.CASCADE)
+	image = models.ImageField(upload_to='posted_images/',default='mpythonlogo.png')
+
 	class Meta:
 		ordering = ['-timestamp']
 
-	def __str__(self):
-		return f'{self.user.username}: {self.content}'
+	def __unicode__(self):
+		return f'{self.user.username}: {self.content, self.image}'
 
-#  class AlbumImage(models.Model):
-#  	album = models.ForeignKey(Post, related_name='images')
-#     image = models.ImageField(upload_to='albums/images/')
+# class AlbumImage(models.Model):
+# 	album = models.ForeignKey(Post, related_name='images',on_delete=models.CASCADE)
+# 	image = models.ImageField(upload_to='albums/images/')
 
-#     def __unicode__(self,):
-#         return str(self.image)
+# 	def __unicode__(self):
+# 	    return str(self.image)
 
 class Relationship(models.Model):
 	from_user = models.ForeignKey(User, related_name='relationships', on_delete=models.CASCADE)

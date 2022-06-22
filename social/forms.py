@@ -15,9 +15,9 @@ class UserRegisterForm(UserCreationForm):
 		help_texts = {k:"" for k in fields }
 
 class PostForm(forms.ModelForm):
-	image = forms.ImageField(label="",widget=forms.FileInput(attrs={'type':'file'}))
+	image = forms.ImageField(label="",widget=forms.FileInput(attrs={'type':'file'}), required=False)
 	content = forms.CharField(label='', widget=forms.Textarea(attrs={'rows':2, 'placeholder': '¿Qué está pasando?'}), required=True)
 
 	class Meta:
 		model = Post
-		fields = ['content']
+		fields = ('content','image')

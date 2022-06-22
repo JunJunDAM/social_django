@@ -4,6 +4,7 @@ from .forms import UserRegisterForm, PostForm
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+from .forms import PostForm
 
 def feed(request):
 	posts = Post.objects.all()
@@ -29,7 +30,7 @@ def register(request):
 def post(request):
 	current_user = get_object_or_404(User, pk=request.user.pk)
 	if request.method == 'POST':
-		form = PostForm(request.POST)
+		form = PostForm(request.POST, files = request.FILES)
 		if form.is_valid():
 			post = form.save(commit=False)
 			post.user = current_user
